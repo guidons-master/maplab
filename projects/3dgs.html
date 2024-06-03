@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN,en,default">
+    
+    <head>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+<title>MAPLab</title>
+
+<link rel="icon" href="/assets/img/logo.png">
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<script src="/js/main.js"></script>
+    <meta name="generator" content="Hexo 7.0.0"></head>
+
+    <body class="is-flex is-flex-direction-column">
+        <noscript>
+            <div class="modal is-active">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                    <div class="notification is-danger is-light has-text-centered">
+                        <b>This site requires JavaScript. Please enable it in your browser settings.</b>
+                    </div>
+                </div>
+            </div>
+        </noscript>
+        <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <img class="is-rounded" src="/assets/img/logo.png" alt="lab-logo">
+            <span class="title is-6 lab-name">机器感知与计算智能实验室</span>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div id="navbar-menu" class="navbar-menu">
+        <div class="navbar-end">
+            
+                <a class="navbar-item " href="/">
+                    <strong>首页</strong>
+                </a>
+            
+                <a class="navbar-item " href="/team">
+                    <strong>团队</strong>
+                </a>
+            
+                <a class="navbar-item " href="/research">
+                    <strong>研究</strong>
+                </a>
+            
+                <a class="navbar-item active" href="/projects">
+                    <strong>项目</strong>
+                </a>
+            
+                <a class="navbar-item " href="/contact">
+                    <strong>联系</strong>
+                </a>
+            
+            <!-- <a class="navbar-item" id="lang">
+                <span class="icon">
+                    <i class="fas fa-language"></i>
+                </span>
+            </a> -->
+            <a class="navbar-item" id="mode">
+                <span class="icon">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun" hidden></i>
+                </span>
+            </a>
+            <a class="navbar-item js-modal-trigger" data-target="search-input" id="search">
+                <span class="icon" id="search-icon">
+                    <i class="fas fa-search"></i>
+                </span>
+            </a>
+            <div class="modal" id="search-input">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                    <nav class="panel is-link" style="background-color: white">
+                      <p class="panel-heading">
+                        搜索文章
+                      </p>
+                      <div class="panel-block">
+                        <p class="control has-icons-left">
+                          <input class="input" type="text" placeholder="Search">
+                          <span class="icon is-left">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                          </span>
+                        </p>
+                      </div>
+                      <p class="panel-tabs">
+                        <a class="is-active" id="tab-all">所有</a>
+                        <a id="tab-team">团队</a>
+                        <a id="tab-projects">项目</a>
+                        <a id="tab-research">研究</a>
+                      </p>
+                      <div class="panel-block" style="opacity: 0">
+                      </div>
+                      <div class="panel-blocks">
+                      </div>
+                    </nav>
+                </div>
+            </div>
+            <a class="navbar-item" href="https://github.com/guidons-master/hexo-theme-lab" target="_blank">
+                <span class="icon">
+                    <i class="fab fa-github"></i>
+                </span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+        <div class="container is-fluid body is-flex is-flex-direction-column is-flex-grow-1">
+            <div class="mtb-2" id="markdown-container">
+    <script type="text/javascript" async src=""></script>
+        <div class="content">
+            <head>
+    <style>
+        h3 {
+            margin: 5px 0;
+        }
+        p {
+            margin: 5px 0;
+            font-size: small;
+        }
+        .cube-wrapper {
+            transform-style: preserve-3d;
+        }
+        .cube {
+            transform-style: preserve-3d;
+            transform: rotateX(45deg) rotateZ(45deg);
+            animation: rotation 2s infinite;
+        }
+        .cube-faces {
+            transform-style: preserve-3d;
+            height: 80px;
+            width: 80px;
+            position: relative;
+            transform-origin: 0 0;
+            transform: translateX(0) translateY(0) translateZ(-40px);
+        }
+        .cube-face {
+            position: absolute;
+            inset: 0;
+            background: #0017ff;
+            border: solid 1px #ffffff;
+        }
+        .cube-face.top {
+            transform: translateZ(80px);
+        }
+        .cube-face.front {
+            transform-origin: 0 50%;
+            transform: rotateY(-90deg);
+        }
+        .cube-face.back {
+            transform-origin: 0 50%;
+            transform: rotateY(-90deg) translateZ(-80px);
+        }
+        .cube-face.right {
+            transform-origin: 50% 0;
+            transform: rotateX(-90deg) translateY(-80px);
+        }
+        .cube-face.left {
+            transform-origin: 50% 0;
+            transform: rotateX(-90deg) translateY(-80px) translateZ(80px);
+        }
+        @keyframes rotation {
+            0% {
+                transform: rotateX(45deg) rotateY(0) rotateZ(45deg);
+                animation-timing-function: cubic-bezier(
+                    0.17,
+                    0.84,
+                    0.44,
+                    1
+                );
+            }
+            50% {
+                transform: rotateX(45deg) rotateY(0) rotateZ(225deg);
+                animation-timing-function: cubic-bezier(
+                    0.76,
+                    0.05,
+                    0.86,
+                    0.06
+                );
+            }
+            100% {
+                transform: rotateX(45deg) rotateY(0) rotateZ(405deg);
+                animation-timing-function: cubic-bezier(
+                    0.17,
+                    0.84,
+                    0.44,
+                    1
+                );
+            }
+        }
+        .scene,
+        #message {
+            position: absolute;
+            display: flex;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            z-index: 2;
+            height: 100%;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+        #message {
+            font-weight: bold;
+            font-size: large;
+            color: red;
+            pointer-events: none;
+        }
+        details {
+            font-size: small;
+        }
+        #progress {
+            position: absolute;
+            top: 0;
+            height: 5px;
+            background: blue;
+            z-index: 99;
+            transition: width 0.1s ease-in-out;
+        }
+        #quality {
+            position: absolute;
+            bottom: 10px;
+            z-index: 999;
+            right: 10px;
+        }
+        #caminfo {
+            position: absolute;
+            top: 10px;
+            z-index: 999;
+            right: 10px;
+        }
+        #canvas {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+        #instructions {
+            background: rgba(0,0,0,0.6);
+            white-space: pre-wrap;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: x-small;
+        }
+        body.nohf .nohf {
+            display: none;
+        }
+        body.nohf #progress, body.nohf .cube-face {
+            background: #ff9d0d;
+        }
+    </style>
+</head>
+<body>
+    <div id="progress"></div>
+    <div id="message"></div>
+    <div class="scene" id="spinner">
+        <div class="cube-wrapper">
+            <div class="cube">
+                <div class="cube-faces">
+                    <div class="cube-face bottom"></div>
+                    <div class="cube-face top"></div>
+                    <div class="cube-face left"></div>
+                    <div class="cube-face right"></div>
+                    <div class="cube-face back"></div>
+                    <div class="cube-face front"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <canvas id="canvas"></canvas>
+    <div id="quality">
+        <span id="fps"></span>
+    </div>
+    <div id="caminfo">
+        <span id="camid"></span>
+    </div>
+    <div id="fullscreenButton" style="position: absolute; right: 10px; top: 10px; z-index: 1000;display: none">
+        <button class="button is-info">
+            <span class="icon">
+                <i class="fas fa-expand"></i>
+            </span>
+            <span>全屏</span>
+        </button>
+    </div>
+    <script>
+        document.getElementById('fullscreenButton').addEventListener('click', function() {
+            var canvas = document.getElementById('canvas');
+            if (!document.fullscreenElement) {
+                if (canvas.requestFullscreen) {
+                    canvas.requestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen(); 
+                }
+            }
+        });
+    </script>
+    <script src="/assets/3dgs/3dgs.js"></script>
+</body>
+
+
+<!-- <script type="importmap">
+  {
+    "imports": {
+      "three": "/assets/js/three.min.js",
+      "luma-web": "/assets/js/luma-web.module.min.js",
+      "OrbitControls": "/assets/js/OrbitControls.min.js"
+    }
+  }
+</script> -->
+
+<!-- <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+  <canvas id="scene" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);"></canvas>
+</div>
+
+<script type="module">
+  import * as THREE from "three";
+  import { LumaSplatsThree } from "luma-web";
+  import { OrbitControls } from "OrbitControls";
+
+  let splats = new LumaSplatsThree({
+        source: 'https://lumalabs.ai/capture/c63b154c-dfa5-4fe7-9aac-9cb66fcde007',
+        enableThreeShaderIntegration: false,
+    });
+
+  let scene = new THREE.Scene();
+  let camera = new THREE.PerspectiveCamera( 75, 800 / 600, 0.1, 1000 );
+  let renderer = new THREE.WebGLRenderer({canvas: document.querySelector('#scene')});
+  renderer.setSize( 800, 600 );
+  scene.add(splats);
+  camera.position.z = 5;
+  
+  const controls = new OrbitControls( camera, renderer.domElement );
+  controls.maxPolarAngle = 0.9 * Math.PI / 2;
+  controls.target.set( 0, 0.1, 0 );
+
+  function createText(text, options = {}) {
+    // default options
+    const defaults = {
+      canvasWidth: 1024,
+      canvasHeight: 512,
+      font: '100px sans-serif',
+      textColor: 'white',
+      strokeColor: 'rgba(0, 0, 0, 0.5)',
+      strokeWidth: 5,
+      planeWidth: 5,
+      planeHeight: 2.5,
+      position: { x: 0.8, y: -0.9, z: 0 },
+      rotation: { y: Math.PI / 2 },
+      scale: 0.6,
+    };
+
+    const opts = { ...defaults, ...options };
+
+    // create canvas
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    canvas.width = opts.canvasWidth;
+    canvas.height = opts.canvasHeight;
+
+    // clear white, 0 alpha
+    context.fillStyle = 'rgba(255, 255, 255, 0)';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    // draw text
+    context.fillStyle = opts.textColor;
+    context.font = opts.font;
+    context.textAlign = 'center';
+    context.textBaseline = 'middle';
+    // stroke
+    context.strokeStyle = opts.strokeColor;
+    context.lineWidth = opts.strokeWidth;
+    context.fillText(text, canvas.width / 2, canvas.height / 2);
+    context.strokeText(text, canvas.width / 2, canvas.height / 2);
+
+    // create texture from canvas
+    const texture = new THREE.Texture(canvas);
+    texture.needsUpdate = true;
+
+    // create plane geometry and mesh with the texture
+    const geometry = new THREE.PlaneGeometry(opts.planeWidth, opts.planeHeight);
+    const material = new THREE.MeshStandardMaterial({
+      map: texture,
+      transparent: false,
+      alphaTest: 0.5,
+      side: THREE.DoubleSide,
+      premultipliedAlpha: true,
+      emissive: opts.textColor,
+      emissiveIntensity: 2,
+    });
+    const textPlane = new THREE.Mesh(geometry, material);
+
+    // position and rotate
+    textPlane.position.set(opts.position.x, opts.position.y, opts.position.z);
+    textPlane.rotation.y = opts.rotation.y;
+    textPlane.scale.setScalar(opts.scale);
+
+    return textPlane;
+  }
+  scene.add(createText('智能感知实验室', { position: { x: 0.8, y: -0.1, z: 0 }, rotation: { y: Math.PI / 2 }}));
+
+  function animate() {
+    requestAnimationFrame( animate );
+    renderer.render( scene, camera );
+    controls.update();
+  }
+  animate();
+</script> -->
+        </div>
+</div>
+<!-- <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const container = document.getElementById('markdown-container');
+    const shadowRoot = container.attachShadow({mode: 'open'});
+    const styleElement = document.createElement('style');
+    styleElement.textContent = "@import url('/css/github-markdown.min.css');";
+    if (mathjax !== '') {
+        const scriptElement = document.createElement('script');
+        scriptElement.type = 'text/javascript';
+        scriptElement.src = mathjax;
+        scriptElement.async = true;
+        shadowRoot.appendChild(scriptElement);
+    }
+    const markdownBody = document.createElement('div');
+    markdownBody.className = 'markdown-body';
+    markdownBody.innerHTML = container.innerHTML;
+    shadowRoot.append(styleElement, markdownBody);
+    container.textContent = '';
+});
+</script> -->
+        </div>
+        <footer class="footer">
+  <div class="has-text-centered">
+    <nav class="breadcrumb is-centered" aria-label="friend_link">
+      <ul class="is-size-6 is-size-7-mobile">
+        <li>
+          <a href="https://www.neu.edu.cn/" target="_blank">
+              <span class="icon is-small is-link">
+                <i class="fas fa-university" aria-hidden="true"></i>
+              </span>
+              <span>东北大学</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://www.ise.neu.edu.cn/" target="_blank">
+            <span class="icon is-small is-link">
+              <i class="fas fa-graduation-cap"></i>
+            </span>
+            <span>信息学院</span>
+        </a>
+        </li>
+        <li class="is-active">
+          <a href="/">
+            <span class="icon is-small">
+              <i class="fas fa-flask"></i>
+            </span>
+            <span>MAPLab</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <p class="is-size-6 is-size-7-mobile">
+      <span class="icon">
+        <i class="fas fa-copyright"></i>
+      </span>2024 <a href="/">MAPLab</a> All Rights Reserved.
+      <span class="icon">
+        <i class="fas fa-cog fa-spin fa-fw"></i>
+      </span>Powered by <a href="https://hexo.io/" target="_blank">Hexo </a>&
+      <a href="https://github.com/guidons-master/hexo-theme-lab" target="_blank"> Lab</a>
+    </p>
+  </div>
+</footer>
+
+<button class="button is-link is-outlined" id="back-to-top">
+  <span class="icon">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+  </span>
+</button>
+    </body>
+
+</html>
